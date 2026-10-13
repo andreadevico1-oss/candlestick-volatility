@@ -59,3 +59,39 @@ def plot_maximum_laws(maxima, levels, empirical, theoretical, endpoint):
 
     fig.tight_layout()  
     return fig  
+
+def plot_discretisation_bias(ms, ratios, ses):
+    'Showing how discrete observation underestimate the daily range'
+    fig, ax = plt.subplots(figsize = (10.4, 4.6))
+
+    ax.errorbar(
+        ms,  # number of observation per session
+        ratios, # observed range divided by its continuous reference 
+        yerr=2 * ses,  # uncertainty of two standard errors
+        fmt='o-',
+        color = C_MAIN,
+        lw = 1.8,
+        capsize = 3, # caps for the error bars
+        label = 'Observed / continuous expected range ',
+    )
+
+    grid = np.linspace(5, 1700, 400) 
+    beta = (1 - ratios[-1]) * np.sqrt(ms[-1]) #Anchoring the guide to the last result
+
+    ax.plot(
+        grid,
+        1-beta/np.sqrt(grid), # shrinking discretisation bias
+        color = C_ACCENT,
+        ls = '--',
+        lw = 1.5,
+        label = f'Guide: 1 - {beta:.2f}/sqrt(m)'
+    )
+    
+    ax.axhline(1.0, color=C_MUTED, lw=1)  # Mark the continuous-model target.
+    ax.set_xscale("log")  # Make widely separated observation counts readable.
+    ax.set_xlabel("Observations per session m — log scale")  # Label the horizontal axis.
+    ax.set_ylabel("Observed / continuous expected range")  # Label the vertical axis.
+    ax.set_title("Discretization bias of observed ranges")  # Add the title.
+    ax.legend()  # Display the series labels.
+    fig.tight_layout()
+    return fig 
