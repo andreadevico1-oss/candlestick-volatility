@@ -91,7 +91,7 @@ def plot_discretisation_bias(ms, ratios, ses):
     ax.set_xscale("log")  # Make widely separated observation counts readable.
     ax.set_xlabel("Observations per session m — log scale")  # Label the horizontal axis.
     ax.set_ylabel("Observed / continuous expected range")  # Label the vertical axis.
-    ax.set_title("Discretization bias of observed ranges")  # Add the title.
+    ax.set_title("Discretisation bias of observed ranges")  # Add the title.
     ax.legend()  # Display the series labels.
     fig.tight_layout()
     return fig 
