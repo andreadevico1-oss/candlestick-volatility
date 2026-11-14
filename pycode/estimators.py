@@ -8,3 +8,6 @@ def gk_var(h, l, r):
     R = h-l
     return 0.5 * R * R - (2 * np.log(2)-1) * r * r
 
+def rs_var(h, l, r):
+    return h * (h - r) + l * (l - r)
+
