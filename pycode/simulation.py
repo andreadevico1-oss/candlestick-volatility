@@ -1,4 +1,9 @@
 import numpy as np
+import pandas as pd
+
+from .estimators import parkinson_var, gk_var, rs_var
+from .statistics import chunk_stats
+
 
 # 1st setp is sampling a step's maximum given its endpoint 
 
@@ -47,6 +52,3 @@ def naive_bar(rng, n_days, m, sigma):
     C = x[:, -1]                          # taking the last step as the closing price, taking the last column oif every raw
 
     return H, L, C 
-
-    
-
