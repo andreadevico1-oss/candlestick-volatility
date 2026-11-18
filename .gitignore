@@ -8,5 +8,5 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
-# Temporary: ignore the project notebook until the project is finished.
+# Temporary
 /final_output.ipynb
